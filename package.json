@@ -1,6 +1,6 @@
 {
   "name": "node-wow-lua-codec",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Native module for Node.js that does deserialization/serialization of MDT's strings",
   "keywords": ["World of Warcraft", "WoW"],
   "main": "lib/index.js",
