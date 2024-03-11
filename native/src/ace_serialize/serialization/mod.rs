@@ -30,7 +30,7 @@ pub struct Serializer {
 
 impl Serializer {
     pub fn serialize(
-        mut value: Value,
+        value: Value,
         approximate_len: Option<usize>,
     ) -> Result<Vec<u8>, &'static str> {
         let mut serializer = Self {
@@ -39,7 +39,7 @@ impl Serializer {
         };
 
         serializer.result.push_str("^1");
-        serializer.serialize_helper(&mut value)?;
+        serializer.serialize_helper(&value)?;
         serializer.result.push_str("^^");
 
         Ok(serializer.result.as_bytes().to_vec())

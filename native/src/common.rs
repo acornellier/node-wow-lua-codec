@@ -7,7 +7,7 @@ use super::huffman;
 
 use super::ace_serialize::Deserializer as LegacyDeserializer;
 use super::ace_serialize::Serializer as LegacySerializer;
-use super::lib_serialize::{Deserializer, Serializer};
+use super::lib_serialize::{Deserializer};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum StringVersion {

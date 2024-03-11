@@ -24,6 +24,7 @@ pub struct Serializer {
     string_refs: IndexMap<String, usize>,
 }
 
+#[allow(dead_code)]
 impl Serializer {
     pub fn serialize(
         mut value: Value,

@@ -44,6 +44,7 @@ unsafe fn encode(data: &[u8], buf: &mut String) {
 
 /// Same as encode_raw() but prepends the output with "!WA:2!"
 /// to reduce allocations.
+#[allow(dead_code)]
 pub(crate) fn encode_weakaura(data: &[u8]) -> Result<String, &'static str> {
     const WA_PREFIX: &str = "!WA:2!";
 

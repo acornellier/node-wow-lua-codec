@@ -9,6 +9,7 @@ pub(crate) enum EmbeddedTypeTag {
 }
 
 impl EmbeddedTypeTag {
+    #[allow(dead_code)]
     pub(crate) fn from_u8(v: u8) -> Option<Self> {
         if v <= 3 {
             // SAFETY: we've checked that `v` can be represented as `EmbeddedTypeTag`
@@ -18,6 +19,7 @@ impl EmbeddedTypeTag {
         }
     }
 
+    #[allow(dead_code)]
     pub(crate) fn to_u8(self) -> u8 {
         // SAFETY: safe due to #[repr(u8)]
         unsafe { std::mem::transmute(self) }
@@ -72,6 +74,7 @@ pub(crate) enum TypeTag {
 }
 
 impl TypeTag {
+    #[allow(dead_code)]
     pub(crate) fn from_u8(v: u8) -> Option<Self> {
         if v <= 31 {
             // SAFETY: we've checked that `v` can be represented as `TypeTag`
@@ -81,6 +84,7 @@ impl TypeTag {
         }
     }
 
+    #[allow(dead_code)]
     pub(crate) fn to_u8(self) -> u8 {
         // SAFETY: safe due to #[repr(u8)]
         unsafe { std::mem::transmute(self) }

@@ -3,7 +3,6 @@ pub(crate) mod serialization;
 pub(crate) mod type_tag;
 
 pub(crate) use deserialization::Deserializer;
-pub(crate) use serialization::Serializer;
 pub(crate) use type_tag::{EmbeddedTypeTag, TypeTag};
 
 #[allow(dead_code)]
