@@ -47,7 +47,7 @@ jobs:
       shell: bash
       env: ${{ matrix.env }}
       run: |
-        export npm_package_name=node-wow-lua-parser
+        export npm_package_name=node-wow-lua-codec
         yarn install --production=false --ignore-scripts
         node node_modules/cargo-cp-artifact/bin/cargo-cp-artifact.js -nc native/index.node -- cargo build --release --manifest-path=native/Cargo.toml --message-format=json-render-diagnostics
 

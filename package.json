@@ -1,5 +1,5 @@
 {
-  "name": "node-wow-lua-parser",
+  "name": "node-wow-lua-codec",
   "version": "4.0.0",
   "description": "Native module for Node.js that does deserialization/serialization of MDT's strings",
   "keywords": ["World of Warcraft", "WoW"],
