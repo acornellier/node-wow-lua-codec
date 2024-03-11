@@ -3,7 +3,7 @@ mod decode;
 mod encode;
 pub(crate) use decode::decode;
 #[cfg_attr(not(test), allow(unused_imports))]
-pub(crate) use encode::{encode_raw, encode_weakaura, encode_legacy};
+pub(crate) use encode::{encode_legacy, encode_raw, encode_weakaura};
 
 #[cfg(test)]
 mod tests {
