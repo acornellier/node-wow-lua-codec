@@ -6,6 +6,7 @@ use super::base64;
 use super::huffman;
 
 use super::ace_serialize::Deserializer as LegacyDeserializer;
+use super::ace_serialize::Serializer as LegacySerializer;
 use super::lib_serialize::{Deserializer, Serializer};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -91,7 +92,7 @@ pub fn decode_weakaura(src: &str, max_size: Option<usize>) -> Result<String, &'s
 pub fn encode_weakaura(json: &str) -> Result<String, &'static str> {
     let serialized = serde_json::from_str(json)
         .map_err(|_| "Failed to parse JSON")
-        .and_then(|val| Serializer::serialize(val, Some(json.len())))?;
+        .and_then(|val| LegacySerializer::serialize(val, Some(json.len())))?;
 
     let compressed = {
         use flate2::{read::DeflateEncoder, Compression};
@@ -106,5 +107,5 @@ pub fn encode_weakaura(json: &str) -> Result<String, &'static str> {
             .map_err(|_| "Compression error")
     }?;
 
-    base64::encode_weakaura(&compressed)
+    base64::encode_legacy(&compressed)
 }

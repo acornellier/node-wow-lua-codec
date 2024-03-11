@@ -30,19 +30,19 @@ pub struct Serializer {
 
 impl Serializer {
     pub fn serialize(
-        value: &Value,
+        mut value: Value,
         approximate_len: Option<usize>,
-    ) -> Result<String, &'static str> {
+    ) -> Result<Vec<u8>, &'static str> {
         let mut serializer = Self {
             remaining_depth: 128,
             result: String::with_capacity(approximate_len.unwrap_or(1024)),
         };
 
         serializer.result.push_str("^1");
-        serializer.serialize_helper(value)?;
+        serializer.serialize_helper(&mut value)?;
         serializer.result.push_str("^^");
 
-        Ok(serializer.result)
+        Ok(serializer.result.as_bytes().to_vec())
     }
 
     fn serialize_helper(&mut self, value: &Value) -> Result<(), &'static str> {

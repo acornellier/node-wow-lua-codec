@@ -60,6 +60,23 @@ pub(crate) fn encode_weakaura(data: &[u8]) -> Result<String, &'static str> {
     Ok(result)
 }
 
+/// Same as encode_raw() but prepends the output with "!"
+pub(crate) fn encode_legacy(data: &[u8]) -> Result<String, &'static str> {
+    const WA_PREFIX: &str = "!";
+
+    let mut result = String::with_capacity(
+        calculate_capacity(data)
+            .and_then(|len| len.checked_add(WA_PREFIX.len()))
+            .ok_or(OVERFLOW_ERROR)?,
+    );
+    result.push_str(WA_PREFIX);
+
+    unsafe {
+        encode(data, &mut result);
+    }
+    Ok(result)
+}
+
 #[allow(dead_code)]
 pub(crate) fn encode_raw(data: &[u8]) -> Result<String, &'static str> {
     let mut result = String::with_capacity(calculate_capacity(data).ok_or(OVERFLOW_ERROR)?);
